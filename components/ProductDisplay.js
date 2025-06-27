@@ -48,20 +48,20 @@ const productDisplay = {
       </div>
     </div>
   `,
-  props: {
-    premium: Boolean
-  },
-  setup(props) {
-    const { ref, computed } = Vue;
- 
-    const brand = ref('Awesome');
-    const shipping = computed(() => props.premium ? 'Free' : 30);
-    const product = ref('Boots');
+props:{
+     premium:Boolean},
+setup(props,{emit}){
+
+    const shipping = computed(() => {
+    return props.premium ? 'Free' : '$2.99';
+  });      
+    const product=ref('Boots')
+    const brand=ref('SE 331')
     const description = ref('This boots is for winter');
     const productLink = ref('https://www.camt.cmu.ac.th');
     const inventory = ref(100);
     const onSale = ref(true);
-    const cart = ref(0);
+    const cart = ref([]);
  
     const details = ref([
       '50% cotton',
@@ -82,7 +82,7 @@ const productDisplay = {
     const saleMessage = computed(() => `${brand.value} ${product.value} is on sale`);
  
     function addToCart() {
-      if (inStock.value) cart.value += 1;
+       emit('add-to-cart',variants.value[selectedVariant.value].id)
     }
  
     function toggleStock() {
@@ -92,7 +92,8 @@ const productDisplay = {
     function updateVariant(index) {
       selectedVariant.value = index;
     }
- 
+
+  
     return {
       brand,
       product,
