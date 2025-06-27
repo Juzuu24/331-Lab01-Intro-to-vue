@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8" />
     <title>Intro SE331</title>
+   
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetail.js"></script>
 </head>
-
+ 
 <body>
     <div id="app">
-       <div class="nav-bar"></div>
-        <div class="cart">Cart({{cart}})</div>
-            <product-display :premium="premium"></product-display>
-
-
-
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Import Js -->
-     <script src="./components/ProductDisplay.js"></script>
+      <div class="nav-bar"></div>
+        <div class="cart">Cart({{ cart }})</div>
+     
+        <product-display :premium="premium"></product-display>
+        <!-- Stock toggle -->
+           
+     </div>
+ 
     <script src="./main.js"></script>
+   
 </body>
-
+ 
 </html>
+ 
