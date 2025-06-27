@@ -39,14 +39,24 @@ const productDisplay = {
             {{ size }}
           </span>
         </div>
-        <button class="button"
+
+        <div>
+        
+        <button  class="button"
                 :disabled="!inStock"
                 @click="addToCart"
                 :class="{disabledButton: !inStock}">
           Add To Cart
         </button>
+
+        <button class="button"
+                @click="removeFromCart"
+                >
+          Remove From Cart
+        </button>
       </div>
     </div>
+  </div>
   `,
 props:{
      premium:Boolean},
@@ -84,6 +94,10 @@ setup(props,{emit}){
     function addToCart() {
        emit('add-to-cart',variants.value[selectedVariant.value].id)
     }
+
+     function removeFromCart() {
+       emit('remove-from-cart',variants.value[selectedVariant.value].id)
+    }
  
     function toggleStock() {
       variants.value[selectedVariant.value].quantity = inStock.value ? 0 : 50;
@@ -112,6 +126,7 @@ setup(props,{emit}){
       addToCart,
       toggleStock,
       updateVariant,
+      removeFromCart,
       shipping
     };
   }

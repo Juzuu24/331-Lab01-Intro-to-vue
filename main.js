@@ -6,15 +6,21 @@ const app=createApp({
 
   const premium = ref(false)
 
-    function updateCart(id){
+    function updateCart(){
       cart.value.push(cart.value.length) 
 
+    }
+
+    function removeCart(){
+      cart.value.splice(-1)
     }
  
 return {
   cart,
   premium,
-  updateCart
+  updateCart,
+  removeCart
+  
 }
  }
 })
