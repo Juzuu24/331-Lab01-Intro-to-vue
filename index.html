@@ -14,52 +14,17 @@
     <div id="app">
        <div class="nav-bar"></div>
         <div class="cart">Cart({{cart}})</div>
-            <div class="product-display">
-            <div class="product-container">
-                <div class="product-image">
-                <a :href="link"> <img
-                    :src="image"
-                    alt="product image"
-                    :class="{ outOfStockImg: !inStock || inventory === 0 }"
-                    />
-                 </a>
-                </div>
-            </div>
-            <div class="product-info">
-                <h1>{{title}}</h1>
-                <p v-if="inStock && inventory > 0">In stock</p>
-                <p v-else-if="inStock && inventory <= 10">Almost out of stock</p>
-                <p v-else>Out of stock</p>
+            <product-display :premium="premium"></product-display>
 
-                    <li v-for="detail in details">{{detail}}</li>
-                </ul>
-                <div
-                    v-for="(variant,index) in variants"
-                    :key="variant.id"
-                    @mouseover="updateVariant(index)"
-                    class="color-circle"
-                    :style="{ backgroundColor: variant.color }"
-                    >
-                </div>
 
-                <span v-for="size in sizes">{{size}} ,</span>
-                <div>
-                    <button class="button" disabled="!inStock" @click="addToCart"
-                    :class="{disabledButton:!inStock}">Add to Cart</button>
-                </div>
-
-                <button class="button" @click="toggleInStock">
-                    {{ inStock ? ' In Stock' : ' Out of Stock' }}
-                </button>
-                
-           
 
             </div>
-            </div>
+        </div>
 
     </div>
 
     <!-- Import Js -->
+     <script src="./components/ProductDisplay.js"></script>
     <script src="./main.js"></script>
 </body>
 
